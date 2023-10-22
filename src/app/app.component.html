@@ -1,11 +1,30 @@
-<p-fileUpload
-  mode="basic"
-  chooseLabel="Choose"
-  name="demo[]"
-  url="https://www.primefaces.org/cdn/api/upload.php"
-  accept="image/*"
-  [maxFileSize]="maxFileSize"
-  (onUpload)="onUpload($event)">
-</p-fileUpload>
+<div class="block">
+  <p-fileUpload
+    mode="basic"
+    chooseLabel="Choose"
+    name="demo[]"
+    url="https://www.primefaces.org/cdn/api/upload.php"
+    accept="image/*"
+    [maxFileSize]="maxFileSize"
+    [auto]="true"
+    (onUpload)="onUploadOne($event)">
+  </p-fileUpload>
+</div>
+
+<div class="block">
+  <p-fileUpload
+    name="myfile[]"
+    chooseLabel="Choose files"
+    url="https://www.primefaces.org/cdn/api/upload.php"
+    [multiple]="true"
+    accept="image/*"
+    [maxFileSize]="1000000"
+    (onUpload)="onUpload($event)">
+    <ng-template pTemplate="file" let-file>
+      <div>{{file.name}} - {{file.size}}</div>
+    </ng-template>
+  </p-fileUpload>
+</div>
+
 <p-toast></p-toast>
 
